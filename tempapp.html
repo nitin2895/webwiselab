@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+</style>
+<title>Temprature convertor</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif ;
+  }
+  body{
+    background-color: rgb(59, 120, 182);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+  }
+  form{
+    background-color: rgb(162, 205, 231);
+    height: 350px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  label{
+    font-size: 25px;
+    font-family: Verdana, sans-serif;
+  }
+  #temp{
+    width: 30%;
+    margin-top: 25px;
+    height: 20px;
+    border-radius: 15px;
+    border-style: none;
+    height: 30px;
+    text-align: center;
+  }
+  span{
+    margin-left: 20px;
+    font-size: 20px;
+  }
+  #btn{
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(59, 120, 182);
+    color: #ffff;
+    padding: 10px;
+    font-weight: bold;
+  }
+  #tempdiff{
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(59, 120, 182);
+    color: #ffff;
+    padding: 10px;
+    font-weight: bold;
+  }
+</style>
+<body>
+        <form id="tempCalc" onsubmit="calcTemp(); return false">
+          <label for="temp">Please enter the temprature you'd like to convert</label><br><br>
+          <input  type="number" id="temp" name="temp">
+          <select name="tempdiff" id="tempdiff">
+            <option value="fah">&deg;Fahrenheit</option>
+            <option value="cel">&deg;celsius</option>
+          </select><br><br>
+          <input id="btn"  type="submit" name="temp"><br><br>
+          <label for="">Result :</label>
+          <span id="result"></span>
+        </form>
+        <script>
+         
+         const calcTemp=()=>{
+            let tempvalue=document.getElementById("temp").value;
+            let tempselect=document.getElementById("tempdiff");
+            let valuetemp=tempselect.options[tempselect.selectedIndex].value;
+            const celtofah=(cel)=>{
+               let fahr=Math.round((cel*9/5)+32);
+               return fahr;
+           }
+           const fahtocel=(far)=>{
+               let cel=Math.round((far*9/5)+32);
+               return cel;
+           }
+            let result;
+            if(valuetemp=='cel'){
+                 result=celtofah(tempvalue);
+                 document.getElementById("result").innerHTML=`${result}&deg;celsius`;
+            }else{
+              result=fahtocel(tempvalue);
+               document.getElementById("result").innerHTML=`${result}&deg;fahrenheit`;
+            }
+          }
+        
+        </script>
+</body>
+</html>
